@@ -406,21 +406,21 @@ void lb302Synth::loadSettings( const QDomElement & _this )
 
 // TODO: Split into one function per knob.  envdecay doesn't require
 // recalcFilter.
-void lb302Synth::filterChanged()
-{
-	//fs.cutoff = vcf_cut_knob.value();
-	//fs.reso   = vcf_res_knob.value();
-	//fs.envmod = vcf_mod_knob.value();
-	//fs.dist   = LB_DIST_RATIO*dist_knob.value();
-
-	//float d = 0.2 + (2.3*vcf_dec_knob.value());
-
-	//d *= Engine::mixer()->processingSampleRate();                                // d *= smpl rate
-	//fs.envdecay = pow(0.1, 1.0/d * ENVINC);    // decay is 0.1 to the 1/d * ENVINC
-	//                                           // vcf_envdecay is now adjusted for both
-	//                                           // sampling rate and ENVINC
-	//recalcFilter();
-}
+//void lb302Synth::filterChanged()
+//{
+//	//fs.cutoff = vcf_cut_knob.value();
+//	//fs.reso   = vcf_res_knob.value();
+//	//fs.envmod = vcf_mod_knob.value();
+//	//fs.dist   = LB_DIST_RATIO*dist_knob.value();
+//
+//	//float d = 0.2 + (2.3*vcf_dec_knob.value());
+//
+//	//d *= Engine::mixer()->processingSampleRate();                                // d *= smpl rate
+//	//fs.envdecay = pow(0.1, 1.0/d * ENVINC);    // decay is 0.1 to the 1/d * ENVINC
+//	//                                           // vcf_envdecay is now adjusted for both
+//	//                                           // sampling rate and ENVINC
+//	//recalcFilter();
+//}
 
 
 void lb302Synth::db24Toggled()

@@ -189,7 +189,7 @@ private:
 
 
 public slots:
-	void filterChanged();
+	//void filterChanged();
 	void db24Toggled();
 
 private:
@@ -216,20 +216,20 @@ private:
 	int release_frame;
 
 	// More States
-	int   vcf_envpos;       // Update counter. Updates when >= ENVINC
+	//int   vcf_envpos;       // Update counter. Updates when >= ENVINC
 
-	float vca_attack,       // Amp attack
-	      vca_decay,        // Amp decay
-	      vca_a0,           // Initial amplifier coefficient
-	      vca_a;            // Amplifier coefficient.
+	//float vca_attack,       // Amp attack
+	//      vca_decay,        // Amp decay
+	//      vca_a0,           // Initial amplifier coefficient
+	//      vca_a;            // Amplifier coefficient.
 
 	// Envelope State
-	int   vca_mode;         // 0: attack, 1: decay, 2: idle, 3: never played
+	//int   vca_mode;         // 0: attack, 1: decay, 2: idle, 3: never played
 
 	// My hacks
-	int   sample_cnt;
+	//int   sample_cnt;
 
-	int   last_offset;
+	//int   last_offset;
 
 	//int catch_frame;
 	//int catch_decay;
