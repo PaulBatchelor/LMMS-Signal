@@ -133,12 +133,12 @@ void lb302Filter::playNote()
 //
 
 lb302FilterIIR2::lb302FilterIIR2(lb302FilterKnobState* p_fs) :
-	lb302Filter(p_fs),
-	vcf_d1(0),
-	vcf_d2(0),
-	vcf_a(0),
-	vcf_b(0),
-	vcf_c(1)
+	lb302Filter(p_fs)
+	//vcf_d1(0),
+	//vcf_d2(0),
+	//vcf_a(0),
+	//vcf_b(0),
+	//vcf_c(1)
 {
 
 	//m_dist = new DspEffectLibrary::Distortion( 1.0, 1.0f);
@@ -156,7 +156,7 @@ void lb302FilterIIR2::recalc()
 {
 	lb302Filter::recalc();
 	//m_dist->setThreshold(0.5+(fs->dist*2.0));
-	m_dist->setThreshold(fs->dist*75.0);
+	//m_dist->setThreshold(fs->dist*75.0);
 };
 
 

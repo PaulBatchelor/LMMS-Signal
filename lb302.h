@@ -86,18 +86,6 @@ class lb302FilterIIR2 : public lb302Filter
 	virtual void recalc();
 	virtual void envRecalc();
 	virtual float process(const float& samp);
-
-	protected:
-	float vcf_d1,           //   d1 and d2 are added back into the sample with
-	      vcf_d2;           //   vcf_a and b as coefficients. IIR2 resonance
-	                        //   loop.
-
-	                        // IIR2 Coefficients for mixing dry and delay.
-	float vcf_a,            //   Mixing coefficients for the final sound.
-	      vcf_b,            //
-	      vcf_c;
-
-	DspEffectLibrary::Distortion * m_dist;
 };
 
 
