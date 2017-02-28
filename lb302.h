@@ -246,6 +246,8 @@ private:
 	NotePlayHandle * m_playingNote;
 	NotePlayHandleList m_notes;
 	QMutex m_notesMutex;
+    float gate;
+    float nn;
 } ;
 
 

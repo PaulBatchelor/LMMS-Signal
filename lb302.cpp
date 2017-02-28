@@ -359,6 +359,8 @@ lb302Synth::lb302Synth( InstrumentTrack * _instrumentTrack ) :
 
 	InstrumentPlayHandle * iph = new InstrumentPlayHandle( this, _instrumentTrack );
 	Engine::mixer()->addPlayHandle( iph );
+    gate = 0;
+    nn = 0;
 }
 
 
@@ -482,6 +484,7 @@ int lb302Synth::process(sampleFrame *outbuf, const int size)
 	if( release_frame == 0 || ! m_playingNote ) 
 	{
 		vca_mode = 1;
+        gate = 0;
 	}
 
 	if( new_freq ) 
@@ -506,6 +509,7 @@ int lb302Synth::process(sampleFrame *outbuf, const int size)
 		if( i >= release_frame )
 		{
 			vca_mode = 1;
+            gate = 0;
 		}
 
 		// update vcf
@@ -639,10 +643,8 @@ int lb302Synth::process(sampleFrame *outbuf, const int size)
 		*/
 		//LB302 samp *= (float)(decay_frames - catch_decay)/(float)decay_frames;
 
-		for( int c = 0; c < DEFAULT_CHANNELS; c++ ) 
-		{
-			outbuf[i][c] = samp;
-		}
+        outbuf[i][0] = nn;
+        outbuf[i][1] = gate;
 
 		// Handle Envelope
 		if(vca_mode==0) {
@@ -763,6 +765,7 @@ void lb302Synth::processNote( NotePlayHandle * _n )
 			m_playingNote = _n;
 			new_freq = true;
 			_n->m_pluginData = this;
+            gate = 1;
 		}
 		
 		if( ! m_playingNote && ! _n->isReleased() && release_frame > 0 )
@@ -778,6 +781,7 @@ void lb302Synth::processNote( NotePlayHandle * _n )
 		if( m_playingNote == _n ) 
 		{
 			true_freq = _n->frequency();
+            nn = _n->midiKey();
 
 			if( slideToggle.value() ) {
 				vco_slidebase = GET_INC( true_freq );			// The REAL frequency
