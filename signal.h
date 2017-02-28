@@ -1,14 +1,14 @@
 /*
- * lb302.h - declaration of class lb302 which is a bass synth attempting to
+ * signal.h - declaration of class signal which is a bass synth attempting to
  *           emulate the Roland TB303 bass synth
  *
  * Copyright (c) 2006-2008 Paul Giblock <pgib/at/users.sourceforge.net>
  *
  * This file is part of LMMS - https://lmms.io
  *
- * lb302FilterIIR2 is based on the gsyn filter code by Andy Sloane.
+ * signalFilterIIR2 is based on the gsyn filter code by Andy Sloane.
  *
- * lb302Filter3Pole is based on the TB303 instrument written by
+ * signalFilter3Pole is based on the TB303 instrument written by
  *   Josep M Comajuncosas for the CSounds library
  *
  * This program is free software; you can redistribute it and/or
@@ -29,8 +29,8 @@
  */
 
 
-#ifndef LB302_H_
-#define LB302_H_
+#ifndef SIGNAL_H_
+#define SIGNAL_H_
 
 #include "DspEffectLibrary.h"
 #include "Instrument.h"
@@ -42,15 +42,15 @@
 
 static const int NUM_FILTERS = 2;
 
-class lb302SynthView;
+class signalSynthView;
 class NotePlayHandle;
 
-class lb302Synth : public Instrument
+class signalSynth : public Instrument
 {
 	Q_OBJECT
 public:
-	lb302Synth( InstrumentTrack * _instrument_track );
-	virtual ~lb302Synth();
+	signalSynth( InstrumentTrack * _instrument_track );
+	virtual ~signalSynth();
 
 	virtual void play( sampleFrame * _working_buffer );
 	virtual void playNote( NotePlayHandle * _n,
@@ -83,7 +83,7 @@ private:
 
 	int process(sampleFrame *outbuf, const int size);
 
-	friend class lb302SynthView;
+	friend class signalSynthView;
 
 	NotePlayHandle * m_playingNote;
 	NotePlayHandleList m_notes;
@@ -93,13 +93,13 @@ private:
 } ;
 
 
-class lb302SynthView : public InstrumentView
+class signalSynthView : public InstrumentView
 {
 	Q_OBJECT
 public:
-	lb302SynthView( Instrument * _instrument,
+	signalSynthView( Instrument * _instrument,
 	                QWidget * _parent );
-	virtual ~lb302SynthView();
+	virtual ~signalSynthView();
 
 private:
 	virtual void modelChanged();

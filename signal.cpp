@@ -36,7 +36,7 @@ Plugin::Descriptor PLUGIN_EXPORT signal_plugin_descriptor =
 
 }
 
-lb302Synth::lb302Synth( InstrumentTrack * _instrumentTrack ) :
+signalSynth::signalSynth( InstrumentTrack * _instrumentTrack ) :
 	Instrument( _instrumentTrack, &signal_plugin_descriptor )
 
 {
@@ -49,7 +49,7 @@ lb302Synth::lb302Synth( InstrumentTrack * _instrumentTrack ) :
 }
 
 
-lb302Synth::~lb302Synth()
+signalSynth::~signalSynth()
 {
 	//for (int i=0; i<NUM_FILTERS; ++i) {
 	//	delete vcfs[i];
@@ -57,21 +57,21 @@ lb302Synth::~lb302Synth()
 }
 
 
-void lb302Synth::saveSettings( QDomDocument & _doc,
+void signalSynth::saveSettings( QDomDocument & _doc,
 	                             QDomElement & _this )
 {
 }
 
-void lb302Synth::loadSettings( const QDomElement & _this )
+void signalSynth::loadSettings( const QDomElement & _this )
 {
 }
 
-QString lb302Synth::nodeName() const
+QString signalSynth::nodeName() const
 {
 	return( signal_plugin_descriptor.name );
 }
 
-int lb302Synth::process(sampleFrame *outbuf, const int size)
+int signalSynth::process(sampleFrame *outbuf, const int size)
 {
 	if( release_frame == 0 || ! m_playingNote ) 
 	{
@@ -92,7 +92,7 @@ int lb302Synth::process(sampleFrame *outbuf, const int size)
 	return 1;
 }
 
-void lb302Synth::playNote( NotePlayHandle * _n, sampleFrame * _working_buffer )
+void signalSynth::playNote( NotePlayHandle * _n, sampleFrame * _working_buffer )
 {
 	if( _n->isMasterNote() || ( _n->hasParent() && _n->isReleased() ) )
 	{
@@ -116,7 +116,7 @@ void lb302Synth::playNote( NotePlayHandle * _n, sampleFrame * _working_buffer )
 
 
 
-void lb302Synth::processNote( NotePlayHandle * _n )
+void signalSynth::processNote( NotePlayHandle * _n )
 {
 		/// Start a new note.
 		if( _n->m_pluginData != this ) 
@@ -153,7 +153,7 @@ void lb302Synth::processNote( NotePlayHandle * _n )
 
 
 
-void lb302Synth::play( sampleFrame * _working_buffer )
+void signalSynth::play( sampleFrame * _working_buffer )
 {
 	m_notesMutex.lock();
 	while( ! m_notes.isEmpty() )
@@ -171,7 +171,7 @@ void lb302Synth::play( sampleFrame * _working_buffer )
 
 
 
-void lb302Synth::deleteNotePluginData( NotePlayHandle * _n )
+void signalSynth::deleteNotePluginData( NotePlayHandle * _n )
 {
 	//printf("GONE\n");
 	if( m_playingNote == _n )
@@ -181,13 +181,13 @@ void lb302Synth::deleteNotePluginData( NotePlayHandle * _n )
 }
 
 
-PluginView * lb302Synth::instantiateView( QWidget * _parent )
+PluginView * signalSynth::instantiateView( QWidget * _parent )
 {
-	return( new lb302SynthView( this, _parent ) );
+	return( new signalSynthView( this, _parent ) );
 }
 
 
-lb302SynthView::lb302SynthView( Instrument * _instrument, QWidget * _parent ) :
+signalSynthView::signalSynthView( Instrument * _instrument, QWidget * _parent ) :
 	InstrumentView( _instrument, _parent )
 {
     setAutoFillBackground(true);
@@ -197,12 +197,12 @@ lb302SynthView::lb302SynthView( Instrument * _instrument, QWidget * _parent ) :
 }
 
 
-lb302SynthView::~lb302SynthView()
+signalSynthView::~signalSynthView()
 {
 }
 
 
-void lb302SynthView::modelChanged()
+void signalSynthView::modelChanged()
 {
 }
 
@@ -215,7 +215,7 @@ extern "C"
 Plugin * PLUGIN_EXPORT lmms_plugin_main( Model *, void * _data )
 {
 
-	return( new lb302Synth(
+	return( new signalSynth(
 	        static_cast<InstrumentTrack *>( _data ) ) );
 }
 
