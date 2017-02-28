@@ -47,30 +47,6 @@
 
 #include "embed.cpp"
 
-
-// Envelope Recalculation period
-#define ENVINC 64
-
-//
-// New config
-//
-#define LB_24_IGNORE_ENVELOPE
-#define LB_FILTERED
-//#define LB_DECAY
-//#define LB_24_RES_TRICK
-
-#define LB_DIST_RATIO    4.0
-#define LB_24_VOL_ADJUST 3.0
-//#define LB_DECAY_NOTES
-
-//
-// Old config
-//
-
-
-//#define engine::mixer()->processingSampleRate() 44100.0f
-
-
 extern "C"
 {
 
@@ -244,6 +220,10 @@ PluginView * lb302Synth::instantiateView( QWidget * _parent )
 lb302SynthView::lb302SynthView( Instrument * _instrument, QWidget * _parent ) :
 	InstrumentView( _instrument, _parent )
 {
+    setAutoFillBackground(true);
+    QPalette pal;
+    pal.setBrush(backgroundRole(), PLUGIN_NAME::getIconPixmap("artwork"));
+    setPalette(pal);
 }
 
 
@@ -271,5 +251,3 @@ Plugin * PLUGIN_EXPORT lmms_plugin_main( Model *, void * _data )
 
 
 }
-
-
