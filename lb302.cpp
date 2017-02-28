@@ -423,12 +423,12 @@ void lb302Synth::loadSettings( const QDomElement & _this )
 //}
 
 
-void lb302Synth::db24Toggled()
-{
-	//vcf = vcfs[db24Toggle.value()];
-	// These recalcFilter calls might suck
-	//recalcFilter();
-}
+//void lb302Synth::db24Toggled()
+//{
+//	//vcf = vcfs[db24Toggle.value()];
+//	// These recalcFilter calls might suck
+//	//recalcFilter();
+//}
 
 
 

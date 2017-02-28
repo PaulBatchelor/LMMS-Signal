@@ -190,7 +190,7 @@ private:
 
 public slots:
 	//void filterChanged();
-	void db24Toggled();
+	//void db24Toggled();
 
 private:
 	// Oscillator
