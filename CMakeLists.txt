@@ -93,9 +93,9 @@ add_definitions(-std=c++11)
 
 BUILD_PLUGIN(
 	signal
-    lb302.cpp
+    signal.cpp
 	MOCFILES 
-    lb302.h
+    signal.h
 	EMBEDDED_RESOURCES "${CMAKE_CURRENT_SOURCE_DIR}/*.png"
 )
 
