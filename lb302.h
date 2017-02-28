@@ -45,65 +45,6 @@ static const int NUM_FILTERS = 2;
 class lb302SynthView;
 class NotePlayHandle;
 
-//class lb302FilterKnobState
-//{
-//	public:
-//	float cutoff;
-//	float reso;
-//	float envmod;
-//	float envdecay;
-//	float dist;
-//};
-
-
-//class lb302Filter
-//{
-//	public:
-//	lb302Filter(lb302FilterKnobState* p_fs);
-//	virtual ~lb302Filter() {};
-//
-//	virtual void recalc();
-//	virtual void envRecalc();
-//	virtual float process(const float& samp)=0;
-//	virtual void playNote();
-//
-//	protected:
-//	lb302FilterKnobState *fs;
-//};
-
-//class lb302FilterIIR2 : public lb302Filter
-//{
-//	public:
-//	lb302FilterIIR2(lb302FilterKnobState* p_fs);
-//	virtual ~lb302FilterIIR2();
-//
-//	virtual void recalc();
-//	virtual void envRecalc();
-//	virtual float process(const float& samp);
-//};
-
-
-//class lb302Filter3Pole : public lb302Filter
-//{
-//	public:
-//	lb302Filter3Pole(lb302FilterKnobState* p_fs);
-//
-//	//virtual void recalc();
-//	virtual void envRecalc();
-//	virtual void recalc();
-//	virtual float process(const float& samp);
-//};
-
-
-
-//class lb302Note
-//{
-//public:
-//	float vco_inc;
-//	bool dead;
-//};
-
-
 class lb302Synth : public Instrument
 {
 	Q_OBJECT
@@ -137,55 +78,8 @@ public:
 private:
 	void processNote( NotePlayHandle * n );
 
-	//void initNote(lb302Note *Note);
-	//void initSlide();
-
 private:
-	// Oscillator
-	//float vco_inc,          // Sample increment for the frequency. Creates Sawtooth.
-	//      vco_k,            // Raw oscillator sample [-0.5,0.5]
-	//      vco_c;            // Raw oscillator sample [-0.5,0.5]
-
-	//float vco_slide,        //* Current value of slide exponential curve. Nonzero=sliding
-	//      vco_slideinc,     //* Slide base to use in next node. Nonzero=slide next note
-	//      vco_slidebase;    //* The base vco_inc while sliding.
-
-	//enum  vco_shape_t { SAWTOOTH, SQUARE, TRIANGLE, MOOG, ROUND_SQUARE, SINE, EXPONENTIAL, WHITE_NOISE,
-	//						BL_SAWTOOTH, BL_SQUARE, BL_TRIANGLE, BL_MOOG };
-	//vco_shape_t vco_shape;
-
-	// Filters (just keep both loaded and switch)
-	//lb302Filter* vcfs[NUM_FILTERS];
-
-	// User settings
-	//lb302FilterKnobState fs;
-	//QAtomicPointer<lb302Filter> vcf;
-
 	int release_frame;
-
-	// More States
-	//int   vcf_envpos;       // Update counter. Updates when >= ENVINC
-
-	//float vca_attack,       // Amp attack
-	//      vca_decay,        // Amp decay
-	//      vca_a0,           // Initial amplifier coefficient
-	//      vca_a;            // Amplifier coefficient.
-
-	// Envelope State
-	//int   vca_mode;         // 0: attack, 1: decay, 2: idle, 3: never played
-
-	// My hacks
-	//int   sample_cnt;
-
-	//int   last_offset;
-
-	//int catch_frame;
-	//int catch_decay;
-
-	//bool new_freq;
-	//float true_freq;
-
-	//void recalcFilter();
 
 	int process(sampleFrame *outbuf, const int size);
 
@@ -209,21 +103,6 @@ public:
 
 private:
 	virtual void modelChanged();
-
-	//Knob * m_vcfCutKnob;
-	//Knob * m_vcfResKnob;
-	//Knob * m_vcfDecKnob;
-	//Knob * m_vcfModKnob;
-
-	//Knob * m_distKnob;
-	//Knob * m_slideDecKnob;
-	//automatableButtonGroup * m_waveBtnGrp;
-
-	//LedCheckBox * m_slideToggle;
-	///*LedCheckBox * m_accentToggle;*/ // removed pending accent implementation
-	//LedCheckBox * m_deadToggle;
-	//LedCheckBox * m_db24Toggle;
-
 } ;
 
 #endif
