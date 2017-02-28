@@ -171,21 +171,6 @@ private:
 	void initSlide();
 
 private:
-	FloatModel vcf_cut_knob;
-	FloatModel vcf_res_knob;
-	FloatModel vcf_mod_knob;
-	FloatModel vcf_dec_knob;
-
-	FloatModel vco_fine_detune_knob;
-
-	FloatModel dist_knob;
-	IntModel wave_shape;
-	FloatModel slide_dec_knob;
-
-	BoolModel slideToggle;
-	BoolModel accentToggle;
-	BoolModel deadToggle;
-	BoolModel db24Toggle;
 
 
 public slots:
