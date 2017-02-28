@@ -194,24 +194,24 @@ public slots:
 
 private:
 	// Oscillator
-	float vco_inc,          // Sample increment for the frequency. Creates Sawtooth.
-	      vco_k,            // Raw oscillator sample [-0.5,0.5]
-	      vco_c;            // Raw oscillator sample [-0.5,0.5]
+	//float vco_inc,          // Sample increment for the frequency. Creates Sawtooth.
+	//      vco_k,            // Raw oscillator sample [-0.5,0.5]
+	//      vco_c;            // Raw oscillator sample [-0.5,0.5]
 
-	float vco_slide,        //* Current value of slide exponential curve. Nonzero=sliding
-	      vco_slideinc,     //* Slide base to use in next node. Nonzero=slide next note
-	      vco_slidebase;    //* The base vco_inc while sliding.
+	//float vco_slide,        //* Current value of slide exponential curve. Nonzero=sliding
+	//      vco_slideinc,     //* Slide base to use in next node. Nonzero=slide next note
+	//      vco_slidebase;    //* The base vco_inc while sliding.
 
-	enum  vco_shape_t { SAWTOOTH, SQUARE, TRIANGLE, MOOG, ROUND_SQUARE, SINE, EXPONENTIAL, WHITE_NOISE,
-							BL_SAWTOOTH, BL_SQUARE, BL_TRIANGLE, BL_MOOG };
-	vco_shape_t vco_shape;
+	//enum  vco_shape_t { SAWTOOTH, SQUARE, TRIANGLE, MOOG, ROUND_SQUARE, SINE, EXPONENTIAL, WHITE_NOISE,
+	//						BL_SAWTOOTH, BL_SQUARE, BL_TRIANGLE, BL_MOOG };
+	//vco_shape_t vco_shape;
 
 	// Filters (just keep both loaded and switch)
-	lb302Filter* vcfs[NUM_FILTERS];
+	//lb302Filter* vcfs[NUM_FILTERS];
 
 	// User settings
-	lb302FilterKnobState fs;
-	QAtomicPointer<lb302Filter> vcf;
+	//lb302FilterKnobState fs;
+	//QAtomicPointer<lb302Filter> vcf;
 
 	int release_frame;
 
@@ -231,11 +231,11 @@ private:
 
 	int   last_offset;
 
-	int catch_frame;
-	int catch_decay;
+	//int catch_frame;
+	//int catch_decay;
 
-	bool new_freq;
-	float true_freq;
+	//bool new_freq;
+	//float true_freq;
 
 	void recalcFilter();
 

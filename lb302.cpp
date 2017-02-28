@@ -628,7 +628,7 @@ void lb302Synth::processNote( NotePlayHandle * _n )
 		// Check for slide
 		if( m_playingNote == _n ) 
 		{
-			true_freq = _n->frequency();
+			//true_freq = _n->frequency();
             nn = _n->midiKey();
 
 			//if( slideToggle.value() ) {
