@@ -262,19 +262,19 @@ public:
 private:
 	virtual void modelChanged();
 
-	Knob * m_vcfCutKnob;
-	Knob * m_vcfResKnob;
-	Knob * m_vcfDecKnob;
-	Knob * m_vcfModKnob;
+	//Knob * m_vcfCutKnob;
+	//Knob * m_vcfResKnob;
+	//Knob * m_vcfDecKnob;
+	//Knob * m_vcfModKnob;
 
-	Knob * m_distKnob;
-	Knob * m_slideDecKnob;
-	automatableButtonGroup * m_waveBtnGrp;
+	//Knob * m_distKnob;
+	//Knob * m_slideDecKnob;
+	//automatableButtonGroup * m_waveBtnGrp;
 
-	LedCheckBox * m_slideToggle;
-	/*LedCheckBox * m_accentToggle;*/ // removed pending accent implementation
-	LedCheckBox * m_deadToggle;
-	LedCheckBox * m_db24Toggle;
+	//LedCheckBox * m_slideToggle;
+	///*LedCheckBox * m_accentToggle;*/ // removed pending accent implementation
+	//LedCheckBox * m_deadToggle;
+	//LedCheckBox * m_db24Toggle;
 
 } ;
 
