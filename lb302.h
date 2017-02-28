@@ -69,12 +69,6 @@ class lb302Filter
 
 	protected:
 	lb302FilterKnobState *fs;
-
-	// Filter Decay
-	float vcf_c0;           // c0=e1 on retrigger; c0*=ed every sample; cutoff=e0+c0
-	float vcf_e0,           // e0 and e1 for interpolation
-	      vcf_e1;
-	float vcf_rescoeff;     // Resonance coefficient [0.30,9.54]
 };
 
 class lb302FilterIIR2 : public lb302Filter
@@ -98,18 +92,6 @@ class lb302Filter3Pole : public lb302Filter
 	virtual void envRecalc();
 	virtual void recalc();
 	virtual float process(const float& samp);
-
-	protected:
-	float kfcn,
-	      kp,
-	      kp1,
-	      kp1h,
-	      kres;
-	float ay1,
-	      ay2,
-	      aout,
-	      lastin,
-	      value;
 };
 
 
@@ -155,15 +137,8 @@ public:
 private:
 	void processNote( NotePlayHandle * n );
 
-	void initNote(lb302Note *Note);
-	void initSlide();
-
-private:
-
-
-public slots:
-	//void filterChanged();
-	//void db24Toggled();
+	//void initNote(lb302Note *Note);
+	//void initSlide();
 
 private:
 	// Oscillator
@@ -210,7 +185,7 @@ private:
 	//bool new_freq;
 	//float true_freq;
 
-	void recalcFilter();
+	//void recalcFilter();
 
 	int process(sampleFrame *outbuf, const int size);
 

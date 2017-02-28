@@ -95,10 +95,7 @@ Plugin::Descriptor PLUGIN_EXPORT signal_plugin_descriptor =
 //
 
 lb302Filter::lb302Filter(lb302FilterKnobState* p_fs) :
-	fs(p_fs),
-	vcf_c0(0),
-	vcf_e0(0),
-	vcf_e1(0)
+	fs(p_fs)
 {
 };
 
@@ -196,11 +193,7 @@ float lb302FilterIIR2::process(const float& samp)
 //
 
 lb302Filter3Pole::lb302Filter3Pole(lb302FilterKnobState *p_fs) :
-	lb302Filter(p_fs),
-	ay1(0),
-	ay2(0),
-	aout(0),
-	lastin(0)
+	lb302Filter(p_fs)
 {
 };
 
@@ -439,26 +432,26 @@ QString lb302Synth::nodeName() const
 
 
 // OBSOLETE. Break apart once we get Q_OBJECT to work. >:[
-void lb302Synth::recalcFilter()
-{
-//#if QT_VERSION >= 0x050000
-//	vcf.load()->recalc();
-//#else
-//	vcf->recalc();
-//#endif
-
-	// THIS IS OLD 3pole/24dB code, I may reintegrate it.  Don't need it
-	// right now.   Should be toggled by LB_24_RES_TRICK at the moment.
-
-	/*kfcn = 2.0 * (((vcf_cutoff*3000))) / engine::mixer()->processingSampleRate();
-	kp   = ((-2.7528*kfcn + 3.0429)*kfcn + 1.718)*kfcn - 0.9984;
-	kp1  = kp+1.0;
-	kp1h = 0.5*kp1;
-	kres = (((vcf_reso))) * (((-2.7079*kp1 + 10.963)*kp1 - 14.934)*kp1 + 8.4974);
-	value = 1.0+( (((0))) *(1.5 + 2.0*kres*(1.0-kfcn))); // ENVMOD was DIST*/
-
-	//vcf_envpos = ENVINC; // Trigger filter update in process()
-}
+//void lb302Synth::recalcFilter()
+//{
+////#if QT_VERSION >= 0x050000
+////	vcf.load()->recalc();
+////#else
+////	vcf->recalc();
+////#endif
+//
+//	// THIS IS OLD 3pole/24dB code, I may reintegrate it.  Don't need it
+//	// right now.   Should be toggled by LB_24_RES_TRICK at the moment.
+//
+//	/*kfcn = 2.0 * (((vcf_cutoff*3000))) / engine::mixer()->processingSampleRate();
+//	kp   = ((-2.7528*kfcn + 3.0429)*kfcn + 1.718)*kfcn - 0.9984;
+//	kp1  = kp+1.0;
+//	kp1h = 0.5*kp1;
+//	kres = (((vcf_reso))) * (((-2.7079*kp1 + 10.963)*kp1 - 14.934)*kp1 + 8.4974);
+//	value = 1.0+( (((0))) *(1.5 + 2.0*kres*(1.0-kfcn))); // ENVMOD was DIST*/
+//
+//	//vcf_envpos = ENVINC; // Trigger filter update in process()
+//}
 
 //inline float GET_INC(float freq) {
 //	return freq/Engine::mixer()->processingSampleRate();  // TODO: Use actual sampling rate.
@@ -520,65 +513,65 @@ int lb302Synth::process(sampleFrame *outbuf, const int size)
  *  to be called from process() when a prior edge-to-edge note is done releasing.
  */
 
-void lb302Synth::initNote( lb302Note *n)
-{
-//	catch_decay = 0;
-//
-//	vco_inc = n->vco_inc;
-//
-//	// Always reset vca on non-dead notes, and
-//	// Only reset vca on decaying(decayed) and never-played
-//	if(n->dead == 0 || (vca_mode==1 || vca_mode==3)) {
-//		//printf("    good\n");
-//		sample_cnt = 0;
-//		vca_mode = 0;
-//		// LB303:
-//		//vca_a = 0;
-//	}
-//	else {
-//		vca_mode = 2;
-//	}
-//
-//	initSlide();
-//
-//	// Slide-from note, save inc for next note
-//	if (slideToggle.value()) {
-//		vco_slideinc = vco_inc; // May need to equal vco_slidebase+vco_slide if last note slid
-//	}
-//
-//
-//	recalcFilter();
-//
-//	if(n->dead ==0){
-//		// Swap next two blocks??
-////#if QT_VERSION >= 0x050000
-////		vcf.load()->playNote();
-////#else
-////		vcf->playNote();
-////#endif
-//		// Ensure envelope is recalculated
-//		vcf_envpos = ENVINC;
-//
-//		// Double Check
-//		//vca_mode = 0;
-//		//vca_a = 0.0;
-//	}
-}
+//void lb302Synth::initNote( lb302Note *n)
+//{
+////	catch_decay = 0;
+////
+////	vco_inc = n->vco_inc;
+////
+////	// Always reset vca on non-dead notes, and
+////	// Only reset vca on decaying(decayed) and never-played
+////	if(n->dead == 0 || (vca_mode==1 || vca_mode==3)) {
+////		//printf("    good\n");
+////		sample_cnt = 0;
+////		vca_mode = 0;
+////		// LB303:
+////		//vca_a = 0;
+////	}
+////	else {
+////		vca_mode = 2;
+////	}
+////
+////	initSlide();
+////
+////	// Slide-from note, save inc for next note
+////	if (slideToggle.value()) {
+////		vco_slideinc = vco_inc; // May need to equal vco_slidebase+vco_slide if last note slid
+////	}
+////
+////
+////	recalcFilter();
+////
+////	if(n->dead ==0){
+////		// Swap next two blocks??
+//////#if QT_VERSION >= 0x050000
+//////		vcf.load()->playNote();
+//////#else
+//////		vcf->playNote();
+//////#endif
+////		// Ensure envelope is recalculated
+////		vcf_envpos = ENVINC;
+////
+////		// Double Check
+////		//vca_mode = 0;
+////		//vca_a = 0.0;
+////	}
+//}
 
 
-void lb302Synth::initSlide()
-{
-	// Initiate Slide
-	//if (vco_slideinc) {
-	//	//printf("    sliding\n");
-	//	vco_slide = vco_inc-vco_slideinc;	// Slide amount
-	//	vco_slidebase = vco_inc;			// The REAL frequency
-	//	vco_slideinc = 0;					// reset from-note
-	//}
-	//else {
-	//	vco_slide = 0;
-	//}
-}
+//void lb302Synth::initSlide()
+//{
+//	// Initiate Slide
+//	//if (vco_slideinc) {
+//	//	//printf("    sliding\n");
+//	//	vco_slide = vco_inc-vco_slideinc;	// Slide amount
+//	//	vco_slidebase = vco_inc;			// The REAL frequency
+//	//	vco_slideinc = 0;					// reset from-note
+//	//}
+//	//else {
+//	//	vco_slide = 0;
+//	//}
+//}
 
 
 void lb302Synth::playNote( NotePlayHandle * _n, sampleFrame * _working_buffer )
