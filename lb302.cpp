@@ -94,167 +94,167 @@ Plugin::Descriptor PLUGIN_EXPORT signal_plugin_descriptor =
 // lb302Filter
 //
 
-lb302Filter::lb302Filter(lb302FilterKnobState* p_fs) :
-	fs(p_fs)
-{
-};
+//lb302Filter::lb302Filter(lb302FilterKnobState* p_fs) :
+//	fs(p_fs)
+//{
+//};
 
 
-void lb302Filter::recalc()
-{
-	//vcf_e1 = exp(6.109 + 1.5876*(fs->envmod) + 2.1553*(fs->cutoff) - 1.2*(1.0-(fs->reso)));
-	//vcf_e0 = exp(5.613 - 0.8*(fs->envmod) + 2.1553*(fs->cutoff) - 0.7696*(1.0-(fs->reso)));
-	//vcf_e0*=M_PI/Engine::mixer()->processingSampleRate();
-	//vcf_e1*=M_PI/Engine::mixer()->processingSampleRate();
-	//vcf_e1 -= vcf_e0;
-
-	//vcf_rescoeff = exp(-1.20 + 3.455*(fs->reso));
-};
-
-
-void lb302Filter::envRecalc()
-{
-	//vcf_c0 *= fs->envdecay;       // Filter Decay. vcf_decay is adjusted for Hz and ENVINC
-	// vcf_rescoeff = exp(-1.20 + 3.455*(fs->reso)); moved above
-};
+//void lb302Filter::recalc()
+//{
+//	//vcf_e1 = exp(6.109 + 1.5876*(fs->envmod) + 2.1553*(fs->cutoff) - 1.2*(1.0-(fs->reso)));
+//	//vcf_e0 = exp(5.613 - 0.8*(fs->envmod) + 2.1553*(fs->cutoff) - 0.7696*(1.0-(fs->reso)));
+//	//vcf_e0*=M_PI/Engine::mixer()->processingSampleRate();
+//	//vcf_e1*=M_PI/Engine::mixer()->processingSampleRate();
+//	//vcf_e1 -= vcf_e0;
+//
+//	//vcf_rescoeff = exp(-1.20 + 3.455*(fs->reso));
+//};
 
 
-void lb302Filter::playNote()
-{
-	//vcf_c0 = vcf_e1;
-}
+//void lb302Filter::envRecalc()
+//{
+//	//vcf_c0 *= fs->envdecay;       // Filter Decay. vcf_decay is adjusted for Hz and ENVINC
+//	// vcf_rescoeff = exp(-1.20 + 3.455*(fs->reso)); moved above
+//};
+//
+//
+//void lb302Filter::playNote()
+//{
+//	//vcf_c0 = vcf_e1;
+//}
 
 
 //
 // lb302FilterIIR2
 //
 
-lb302FilterIIR2::lb302FilterIIR2(lb302FilterKnobState* p_fs) :
-	lb302Filter(p_fs)
-	//vcf_d1(0),
-	//vcf_d2(0),
-	//vcf_a(0),
-	//vcf_b(0),
-	//vcf_c(1)
-{
-
-	//m_dist = new DspEffectLibrary::Distortion( 1.0, 1.0f);
-
-};
-
-
-lb302FilterIIR2::~lb302FilterIIR2()
-{
-	//delete m_dist;
-}
+//lb302FilterIIR2::lb302FilterIIR2(lb302FilterKnobState* p_fs) :
+//	lb302Filter(p_fs)
+//	//vcf_d1(0),
+//	//vcf_d2(0),
+//	//vcf_a(0),
+//	//vcf_b(0),
+//	//vcf_c(1)
+//{
+//
+//	//m_dist = new DspEffectLibrary::Distortion( 1.0, 1.0f);
+//
+//};
 
 
-void lb302FilterIIR2::recalc()
-{
-	lb302Filter::recalc();
-	//m_dist->setThreshold(0.5+(fs->dist*2.0));
-	//m_dist->setThreshold(fs->dist*75.0);
-};
+//lb302FilterIIR2::~lb302FilterIIR2()
+//{
+//	//delete m_dist;
+//}
 
 
-void lb302FilterIIR2::envRecalc()
-{
-	//float k, w;
-
-	//lb302Filter::envRecalc();
-
-	//w = vcf_e0 + vcf_c0;          // e0 is adjusted for Hz and doesn't need ENVINC
-	//k = exp(-w/vcf_rescoeff);     // Does this mean c0 is inheritantly?
-
-	//vcf_a = 2.0*cos(2.0*w) * k;
-	//vcf_b = -k*k;
-	//vcf_c = 1.0 - vcf_a - vcf_b;
-}
+//void lb302FilterIIR2::recalc()
+//{
+//	lb302Filter::recalc();
+//	//m_dist->setThreshold(0.5+(fs->dist*2.0));
+//	//m_dist->setThreshold(fs->dist*75.0);
+//};
 
 
-float lb302FilterIIR2::process(const float& samp)
-{
-	//float ret = vcf_a*vcf_d1 + vcf_b*vcf_d2 + vcf_c*samp;
-	//// Delayed samples for filter
-	//vcf_d2 = vcf_d1;
-	//vcf_d1 = ret;
-
-	//if(fs->dist > 0)
-	//	ret=m_dist->nextSample(ret);
-
-	//// output = IIR2 + dry
-	//return ret;
-    return 0;
-}
+//void lb302FilterIIR2::envRecalc()
+//{
+//	//float k, w;
+//
+//	//lb302Filter::envRecalc();
+//
+//	//w = vcf_e0 + vcf_c0;          // e0 is adjusted for Hz and doesn't need ENVINC
+//	//k = exp(-w/vcf_rescoeff);     // Does this mean c0 is inheritantly?
+//
+//	//vcf_a = 2.0*cos(2.0*w) * k;
+//	//vcf_b = -k*k;
+//	//vcf_c = 1.0 - vcf_a - vcf_b;
+//}
+//
+//
+//float lb302FilterIIR2::process(const float& samp)
+//{
+//	//float ret = vcf_a*vcf_d1 + vcf_b*vcf_d2 + vcf_c*samp;
+//	//// Delayed samples for filter
+//	//vcf_d2 = vcf_d1;
+//	//vcf_d1 = ret;
+//
+//	//if(fs->dist > 0)
+//	//	ret=m_dist->nextSample(ret);
+//
+//	//// output = IIR2 + dry
+//	//return ret;
+//    return 0;
+//}
 
 
 //
 // lb302Filter3Pole
 //
 
-lb302Filter3Pole::lb302Filter3Pole(lb302FilterKnobState *p_fs) :
-	lb302Filter(p_fs)
-{
-};
-
-
-void lb302Filter3Pole::recalc()
-{
-	// DO NOT CALL BASE CLASS
-	//vcf_e0 = 0.000001;
-	//vcf_e1 = 1.0;
-}
+//lb302Filter3Pole::lb302Filter3Pole(lb302FilterKnobState *p_fs) :
+//	lb302Filter(p_fs)
+//{
+//};
+//
+//
+//void lb302Filter3Pole::recalc()
+//{
+//	// DO NOT CALL BASE CLASS
+//	//vcf_e0 = 0.000001;
+//	//vcf_e1 = 1.0;
+//}
 
 
 // TODO: Try using k instead of vcf_reso
-void lb302Filter3Pole::envRecalc()
-{
-//	float w,k;
-//	float kfco;
+//void lb302Filter3Pole::envRecalc()
+//{
+////	float w,k;
+////	float kfco;
+////
+////	lb302Filter::envRecalc();
+////
+////	// e0 is adjusted for Hz and doesn't need ENVINC
+////	w = vcf_e0 + vcf_c0;
+////	k = (fs->cutoff > 0.975)?0.975:fs->cutoff;
+////	kfco = 50.f + (k)*((2300.f-1600.f*(fs->envmod))+(w) *
+////	                   (700.f+1500.f*(k)+(1500.f+(k)*(Engine::mixer()->processingSampleRate()/2.f-6000.f)) *
+////	                   (fs->envmod)) );
+////	//+iacc*(.3+.7*kfco*kenvmod)*kaccent*kaccurve*2000
+////
+////
+////#ifdef LB_24_IGNORE_ENVELOPE
+////	// kfcn = fs->cutoff;
+////	kfcn = 2.0 * kfco / Engine::mixer()->processingSampleRate();
+////#else
+////	kfcn = w;
+////#endif
+////	kp   = ((-2.7528*kfcn + 3.0429)*kfcn + 1.718)*kfcn - 0.9984;
+////	kp1  = kp+1.0;
+////	kp1h = 0.5*kp1;
+////#ifdef LB_24_RES_TRICK
+////	k = exp(-w/vcf_rescoeff);
+////	kres = (((k))) * (((-2.7079*kp1 + 10.963)*kp1 - 14.934)*kp1 + 8.4974);
+////#else
+////	kres = (((fs->reso))) * (((-2.7079*kp1 + 10.963)*kp1 - 14.934)*kp1 + 8.4974);
+////#endif
+////	value = 1.0+( (fs->dist) *(1.5 + 2.0*kres*(1.0-kfcn))); // ENVMOD was DIST
+//}
 //
-//	lb302Filter::envRecalc();
 //
-//	// e0 is adjusted for Hz and doesn't need ENVINC
-//	w = vcf_e0 + vcf_c0;
-//	k = (fs->cutoff > 0.975)?0.975:fs->cutoff;
-//	kfco = 50.f + (k)*((2300.f-1600.f*(fs->envmod))+(w) *
-//	                   (700.f+1500.f*(k)+(1500.f+(k)*(Engine::mixer()->processingSampleRate()/2.f-6000.f)) *
-//	                   (fs->envmod)) );
-//	//+iacc*(.3+.7*kfco*kenvmod)*kaccent*kaccurve*2000
+//float lb302Filter3Pole::process(const float& samp)
+//{
+//	//float ax1  = lastin;
+//	//float ay11 = ay1;
+//	//float ay31 = ay2;
+//	//lastin  = (samp) - tanh(kres*aout);
+//	//ay1     = kp1h * (lastin+ax1) - kp*ay1;
+//	//ay2     = kp1h * (ay1 + ay11) - kp*ay2;
+//	//aout    = kp1h * (ay2 + ay31) - kp*aout;
 //
-//
-//#ifdef LB_24_IGNORE_ENVELOPE
-//	// kfcn = fs->cutoff;
-//	kfcn = 2.0 * kfco / Engine::mixer()->processingSampleRate();
-//#else
-//	kfcn = w;
-//#endif
-//	kp   = ((-2.7528*kfcn + 3.0429)*kfcn + 1.718)*kfcn - 0.9984;
-//	kp1  = kp+1.0;
-//	kp1h = 0.5*kp1;
-//#ifdef LB_24_RES_TRICK
-//	k = exp(-w/vcf_rescoeff);
-//	kres = (((k))) * (((-2.7079*kp1 + 10.963)*kp1 - 14.934)*kp1 + 8.4974);
-//#else
-//	kres = (((fs->reso))) * (((-2.7079*kp1 + 10.963)*kp1 - 14.934)*kp1 + 8.4974);
-//#endif
-//	value = 1.0+( (fs->dist) *(1.5 + 2.0*kres*(1.0-kfcn))); // ENVMOD was DIST
-}
-
-
-float lb302Filter3Pole::process(const float& samp)
-{
-	//float ax1  = lastin;
-	//float ay11 = ay1;
-	//float ay31 = ay2;
-	//lastin  = (samp) - tanh(kres*aout);
-	//ay1     = kp1h * (lastin+ax1) - kp*ay1;
-	//ay2     = kp1h * (ay1 + ay11) - kp*ay2;
-	//aout    = kp1h * (ay2 + ay31) - kp*aout;
-
-	//return tanh(aout*value)*LB_24_VOL_ADJUST/(1.0+fs->dist);
-    return 0;
-}
+//	//return tanh(aout*value)*LB_24_VOL_ADJUST/(1.0+fs->dist);
+//    return 0;
+//}
 
 
 //

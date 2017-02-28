@@ -45,63 +45,63 @@ static const int NUM_FILTERS = 2;
 class lb302SynthView;
 class NotePlayHandle;
 
-class lb302FilterKnobState
-{
-	public:
-	float cutoff;
-	float reso;
-	float envmod;
-	float envdecay;
-	float dist;
-};
+//class lb302FilterKnobState
+//{
+//	public:
+//	float cutoff;
+//	float reso;
+//	float envmod;
+//	float envdecay;
+//	float dist;
+//};
 
 
-class lb302Filter
-{
-	public:
-	lb302Filter(lb302FilterKnobState* p_fs);
-	virtual ~lb302Filter() {};
+//class lb302Filter
+//{
+//	public:
+//	lb302Filter(lb302FilterKnobState* p_fs);
+//	virtual ~lb302Filter() {};
+//
+//	virtual void recalc();
+//	virtual void envRecalc();
+//	virtual float process(const float& samp)=0;
+//	virtual void playNote();
+//
+//	protected:
+//	lb302FilterKnobState *fs;
+//};
 
-	virtual void recalc();
-	virtual void envRecalc();
-	virtual float process(const float& samp)=0;
-	virtual void playNote();
-
-	protected:
-	lb302FilterKnobState *fs;
-};
-
-class lb302FilterIIR2 : public lb302Filter
-{
-	public:
-	lb302FilterIIR2(lb302FilterKnobState* p_fs);
-	virtual ~lb302FilterIIR2();
-
-	virtual void recalc();
-	virtual void envRecalc();
-	virtual float process(const float& samp);
-};
-
-
-class lb302Filter3Pole : public lb302Filter
-{
-	public:
-	lb302Filter3Pole(lb302FilterKnobState* p_fs);
-
-	//virtual void recalc();
-	virtual void envRecalc();
-	virtual void recalc();
-	virtual float process(const float& samp);
-};
+//class lb302FilterIIR2 : public lb302Filter
+//{
+//	public:
+//	lb302FilterIIR2(lb302FilterKnobState* p_fs);
+//	virtual ~lb302FilterIIR2();
+//
+//	virtual void recalc();
+//	virtual void envRecalc();
+//	virtual float process(const float& samp);
+//};
 
 
+//class lb302Filter3Pole : public lb302Filter
+//{
+//	public:
+//	lb302Filter3Pole(lb302FilterKnobState* p_fs);
+//
+//	//virtual void recalc();
+//	virtual void envRecalc();
+//	virtual void recalc();
+//	virtual float process(const float& samp);
+//};
 
-class lb302Note
-{
-public:
-	float vco_inc;
-	bool dead;
-};
+
+
+//class lb302Note
+//{
+//public:
+//	float vco_inc;
+//	bool dead;
+//};
 
 
 class lb302Synth : public Instrument
