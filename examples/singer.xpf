@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE lmms-project>
+<lmms-project version="1.0" creator="LMMS" creatorversion="1.2.0-rc2.58" type="instrumenttracksettings">
+  <head/>
+  <instrumenttracksettings muted="0" type="0" name="Singer" solo="0">
+    <instrumenttrack pan="0" fxch="0" usemasterpitch="1" pitchrange="1" pitch="0" basenote="45" vol="100">
+      <instrument name="signal">
+        <signal/>
+      </instrument>
+      <eldata fres="0.5" ftype="0" fcut="14000" fwet="0">
+        <elvol lspd_denominator="4" sustain="0.5" pdel="0" userwavefile="" dec="0.5" lamt="0" latt="0" rel="0.1" amt="0" x100="0" att="0" lpdel="0" hold="0.5" lspd_syncmode="0" lshp="0" lspd="0.1" ctlenvamt="0" lspd_numerator="4"/>
+        <elcut lspd_denominator="4" sustain="0.5" pdel="0" userwavefile="" dec="0.5" lamt="0" latt="0" rel="0.1" amt="0" x100="0" att="0" lpdel="0" hold="0.5" lspd_syncmode="0" lshp="0" lspd="0.1" ctlenvamt="0" lspd_numerator="4"/>
+        <elres lspd_denominator="4" sustain="0.5" pdel="0" userwavefile="" dec="0.5" lamt="0" latt="0" rel="0.1" amt="0" x100="0" att="0" lpdel="0" hold="0.5" lspd_syncmode="0" lshp="0" lspd="0.1" ctlenvamt="0" lspd_numerator="4"/>
+      </eldata>
+      <chordcreator chord="0" chordrange="1" chord-enabled="0"/>
+      <arpeggiator arptime="100" arprange="1" arpskip="0" arptime_denominator="4" arptime_syncmode="0" arpmode="0" arpcycle="0" arp-enabled="0" arp="0" arptime_numerator="4" arpdir="0" arpmiss="0" arpgate="100"/>
+      <midiport inputcontroller="0" fixedoutputvelocity="-1" inputchannel="0" outputcontroller="0" writable="0" outputchannel="1" fixedinputvelocity="-1" fixedoutputnote="-1" outputprogram="1" basevelocity="63" readable="0"/>
+      <fxchain numofeffects="2" enabled="1">
+        <effect autoquit_syncmode="0" autoquit_numerator="4" autoquit_denominator="4" autoquit="1" gate="0" name="sporthedit" wet="-1" on="1">
+          <SporthControls P1="0.387" sporth="# a o e &#xa;_f1 &quot;650 400 400 290&quot; gen_vals&#xa;_b1 &quot;80 40 70 40&quot; gen_vals&#xa;_a1 &quot;0 0 0 0&quot; gen_vals&#xa;&#xa;_f2 &quot;1080 800 1700 1870&quot; gen_vals&#xa;_b2 &quot;90 80 80 90&quot; gen_vals&#xa;_a2 &quot;-6 -10 -14 -15&quot; gen_vals&#xa;&#xa;_f3 &quot;2650 2600 2600 2800&quot; gen_vals&#xa;_b3 &quot;120 100 100 100&quot; gen_vals&#xa;_a3 &quot;-7 -12 -12 -18&quot; gen_vals&#xa;_pos var&#xa;&#xa;#4 inv 1 sine 0 3 biscale _pos set&#xa;#3 _pos set &#xa;0 p 3 * _pos set&#xa;&#xa;_inL get &#xa;&#xa;_inR get 0.5 0 thresh &#xa;3 p 0.001 0.1 scale&#xa;tport &#xa;1 p 3 10 scale &#xa;2 p 0 2 scale sine + &#xa;&#xa;mtof 0.3 0.1 square&#xa;dup&#xa;&#xa;_pos get 0 0 0 _f1 tabread&#xa;_pos get 0 0 0 _b1 tabread&#xa;butbp &#xa;_pos get 0 0 0 _a1 tabread &#xa;ampdb *&#xa;#swap dup&#xa;_pos get 0 0 0 _f2 tabread&#xa;_pos get 0 0 0 _b2 tabread&#xa;butbp &#xa;_pos get 0 0 0 _a2 tabread &#xa;ampdb *&#xa;#swap&#xa;_pos get 0 0 0 _f3 tabread&#xa;_pos get 0 0 0 _b3 tabread&#xa;butbp &#xa;_pos get 0 0 0 _a3 tabread &#xa;ampdb *&#xa;#+ +&#xa;bal&#xa;_inR get 0.01 port *&#xa;&#xa;dup" compile="0">
+            <P0 scale_type="linear" value="0.32725" id="1735872"/>
+            <P2 scale_type="linear" value="0.39225" id="7358016"/>
+            <P3 scale_type="linear" value="0.317" id="7629400"/>
+          </SporthControls>
+          <key/>
+        </effect>
+        <effect autoquit_syncmode="0" autoquit_numerator="4" autoquit_denominator="4" autoquit="1" gate="0" name="ladspaeffect" wet="1" on="1">
+          <ladspacontrols ports="4">
+            <port02 data="0.502"/>
+            <port03 data="0.159163"/>
+            <port04 data="0.193653"/>
+            <port05 data="0.25"/>
+          </ladspacontrols>
+          <key>
+            <attribute value="caps" name="file"/>
+            <attribute value="Plate2x2" name="plugin"/>
+          </key>
+        </effect>
+      </fxchain>
+    </instrumenttrack>
+  </instrumenttracksettings>
+</lmms-project>
