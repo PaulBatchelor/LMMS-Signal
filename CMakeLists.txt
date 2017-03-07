@@ -99,3 +99,4 @@ BUILD_PLUGIN(
 	EMBEDDED_RESOURCES "${CMAKE_CURRENT_SOURCE_DIR}/*.png"
 )
 
+install(TARGETS signal DESTINATION "/usr/local/lib/lmms")
